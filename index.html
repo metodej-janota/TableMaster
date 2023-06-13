@@ -17,7 +17,7 @@
     <script src="https://unpkg.com/feather-icons"></script>
 
     <!-- Style -->
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/style.css" />
 
     <title>TableMaster</title>
   </head>
@@ -26,7 +26,7 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="#">TableMaster</a>
       <div class="d-flex gap-2">
-        <a class="btn btn-primary d-flex" type="submit"
+        <a class="btn btn-primary d-flex" type="submit" onclick="createTable()"
           ><i data-feather="table"></i>Create Table</a
         >
         <a class="btn btn-outline-primary d-flex" type="submit">
@@ -35,6 +35,10 @@
       </div>
     </div>
   </nav>
+
+  <section>
+    <div class="container col-8" id="page"></div>
+  </section>
 
   <body>
     <!--Bootstrap Bundle with Popper-->
