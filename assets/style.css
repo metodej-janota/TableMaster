@@ -1,0 +1,9 @@
+.feather{
+    height: 20px;
+}
+
+a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
