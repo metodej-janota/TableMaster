@@ -19,10 +19,13 @@ class table {
 
     /* Table Name */
 
-    let tableName = document.createElement("p");
-    tableName.className = "fs-4";
-    tableName.innerHTML = "Table name";
-    container.appendChild(tableName);
+
+    let text = document.createElement("input");
+    text.type = "text";
+    text.setAttribute("id", "caption");
+    text.className = "fs-4";
+    text.value = "Table name";
+    container.appendChild(text);
 
     /* Table Name */
 
