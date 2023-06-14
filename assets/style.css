@@ -21,10 +21,23 @@ th:hover {
 input[type="text"] {
   border: none;
   background-color: transparent;
+  width: 100%;
 }
 
 input:focus {
   outline: none;
+}
+
+#icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+#caption{
+  float: left;
 }
 
 a {

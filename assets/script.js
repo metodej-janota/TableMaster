@@ -10,7 +10,7 @@ class table {
 
   create() {
     this.col = 1;
-    this.row = 4;
+    this.row = 3;
 
     let container = document.createElement("div");
     container.className = "container ";
@@ -18,7 +18,6 @@ class table {
     page.appendChild(container);
 
     /* Table Name */
-
 
     let text = document.createElement("input");
     text.type = "text";
@@ -56,20 +55,39 @@ class table {
       let th = document.createElement("th");
       tr.appendChild(th);
 
+      let content = document.createElement("div");
+      content.className = "container d-flex gap-2";
+      content.setAttribute("id", "icon");
+      th.appendChild(content);
+
       let text = document.createElement("input");
       text.type = "text";
       text.className = "fw-bold";
       text.setAttribute("id", "caption");
       text.value = "Row";
-      th.appendChild(text);
+      content.appendChild(text);
+
+      let a = document.createElement("a");
+      content.appendChild(a);
+      a.addEventListener("click", () => {
+        deleteRow();
+      });
+
+      let garbage = document.createElement("i");
+      garbage.setAttribute("data-feather", "trash-2");
+      a.appendChild(garbage);
+      function deleteRow() {
+        console.log("DSDDS");
+      }
     }
+
+    feather.replace();
 
     let btnContainer = document.createElement("div");
     btnContainer.className = "container d-flex gap-2";
     container.appendChild(btnContainer);
 
     /* Save Button */
-
     let btnSave = document.createElement("button");
     btnSave.className = "btn btn-primary";
     btnSave.innerHTML = "Save table";
@@ -77,33 +95,30 @@ class table {
       this.save();
     });
     btnContainer.appendChild(btnSave);
-
     /* Save Button */
 
     /* Add Row Button */
-
     let btnRow = document.createElement("button");
     btnRow.className = "btn btn-outline-primary";
     btnRow.innerHTML = "Add row";
     btnRow.addEventListener("click", () => {
-      this.addRow();
+      this.row++;
+      addRow();
     });
     btnContainer.appendChild(btnRow);
-
     /* Add Row Button */
 
     /* Add Col Button */
-
     let btnCol = document.createElement("button");
     btnCol.className = "btn btn-outline-primary";
     btnCol.innerHTML = "Add column";
     btnCol.addEventListener("click", () => {
       this.col++;
-      addCol(this.col);
+      addCol(this.col, this.row);
     });
     btnContainer.appendChild(btnCol);
 
-    function addCol(col) {
+    function addCol(col, row) {
       let tr = document.createElement("tr");
       tbody.appendChild(tr);
 
@@ -112,7 +127,7 @@ class table {
       number.setAttribute("scope", "col");
       tr.appendChild(number);
 
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < row; i++) {
         let th = document.createElement("th");
         tr.appendChild(th);
 
@@ -123,11 +138,44 @@ class table {
         th.appendChild(text);
       }
     }
-
     /* Add Col Button */
 
-    /* Delete Button */
+    /* Add Row Button */
+    function addRow() {
+      for (var i = 0, row; (row = table.rows[i]); i++) {
 
+        let th = document.createElement("th");
+        row.appendChild(th);
+
+        let content = document.createElement("div");
+        content.className = "container d-flex gap-2";
+        content.setAttribute("id", "icon");
+        th.appendChild(content);
+
+        let text = document.createElement("input");
+        text.type = "text";
+        text.setAttribute("id", "caption");
+        text.value = "Row";
+        content.appendChild(text);
+
+        if (i == 0) {
+          text.className = "fw-bold";
+          let a = document.createElement("a");
+          content.appendChild(a);
+          a.addEventListener("click", () => {
+            deleteRow();
+          });
+
+          let garbage = document.createElement("i");
+          garbage.setAttribute("data-feather", "trash-2");
+          a.appendChild(garbage);
+        }
+      }
+      feather.replace();
+    }
+    /* Add Row Button */
+
+    /* Delete Button */
     let btnDelete = document.createElement("button");
     btnDelete.className = "btn btn-outline-danger";
     btnDelete.innerHTML = "Delete table";
@@ -139,18 +187,13 @@ class table {
     function deleteTable() {
       container.remove();
     }
-
     /* Delete Button */
 
-    addCol(this.col);
+    addCol(this.col, this.row);
   }
 
   save() {
     alert("SSS");
-  }
-
-  addRow() {
-    alert("DDD");
   }
 }
 
